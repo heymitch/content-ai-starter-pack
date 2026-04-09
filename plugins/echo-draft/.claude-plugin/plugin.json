@@ -1,0 +1,7 @@
+{
+  "name": "echo-draft",
+  "version": "2.0.0",
+  "description": "Generate human-quality content with automatic AI detection scoring and self-improvement loop. Generate, score, fix, verify.",
+  "author": "Mitch Harris",
+  "license": "UNLICENSED"
+}

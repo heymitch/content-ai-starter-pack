@@ -1,0 +1,7 @@
+{
+  "name": "notion-content-setup",
+  "version": "1.0.0",
+  "description": "Create your Notion content calendar. One command, one database, ready to receive content from any skill.",
+  "author": "Mitch Harris",
+  "license": "UNLICENSED"
+}

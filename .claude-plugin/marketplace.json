@@ -1,0 +1,34 @@
+{
+  "name": "content-ai-starter-pack",
+  "owner": {
+    "name": "Mitch Harris",
+    "email": "mitch@ship30for30.com"
+  },
+  "metadata": {
+    "description": "Content AI Starter Pack — LinkedIn AI, Echo Draft, Content Calendar, AI Detection, Notion Content Setup. The complete content creation toolkit.",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "content-ai",
+      "source": "./plugins/content-ai",
+      "description": "LinkedIn AI (10 post formats), profile optimizer, engagement assistant, content calendar, AI pattern hunter.",
+      "version": "1.0.0",
+      "category": "content"
+    },
+    {
+      "name": "echo-draft",
+      "source": "./plugins/echo-draft",
+      "description": "Generate human-quality content with automatic AI detection scoring and self-improvement loop. Generate, score, fix, verify.",
+      "version": "2.0.0",
+      "category": "content"
+    },
+    {
+      "name": "notion-content-setup",
+      "source": "./plugins/notion-content-setup",
+      "description": "Create your Notion content calendar database. One command, ready to receive content from any skill.",
+      "version": "1.0.0",
+      "category": "setup"
+    }
+  ]
+}
