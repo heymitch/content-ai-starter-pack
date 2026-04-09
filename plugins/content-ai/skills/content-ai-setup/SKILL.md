@@ -1,124 +1,71 @@
 ---
 name: content-ai-setup
-description: Set up your Content AI system in under 5 minutes. Defines your niche, content pillars, and generates a starter content calendar. Say "set up my content system", "content setup", or "get started with content".
-user_invocable: true
+description: Set up your Content AI system — creates a Notion content calendar database and connects it to your workspace. Say "set up my content system", "content setup", or "get started with content".
+user-invocable: true
 ---
 
 # Content AI Setup
 
-One-time setup. Gets your content system running in under 5 minutes. After this, every content skill knows who you are, what you write about, and where you're headed.
+Creates your Notion content calendar and wires it into your workspace. Every content skill writes here automatically after setup.
 
-## Step 1: Quick Intake
+## Step 1: Check Existing Config
 
-Ask the user these 3 questions (one at a time, not all at once):
+Read `.coworker/index.md` (if it exists). Look for an existing content calendar URL or content section.
 
-1. **"What's your niche?"** — Not just a topic. Who do you serve, and with what expertise? Push for specificity. "Marketing" is too broad. "Helping B2B founders build personal brands on LinkedIn" is right.
+- If a Notion content calendar URL already exists: tell the user it's already set up, show the URL, and stop.
+- If not: proceed to Step 2.
 
-2. **"How often do you want to post?"** — Options: daily, 3x/week, weekdays only. If they're not sure, recommend 3x/week as a starting cadence.
+## Step 2: Create the Notion Content Calendar
 
-3. **"What does success look like in 90 days?"** — More followers? More inbound leads? Build authority in a new space? This shapes the content mix.
+Use the Notion MCP to create a new database in the user's Notion workspace.
 
-## Step 2: Define Content Pillars
+**Database name:** `Content Calendar`
 
-Based on their answers, propose 3-5 content pillars.
+**Schema:**
 
-Each pillar must be:
-- Broad enough to write about for months
-- Focused enough that their audience immediately sees relevance
-- Aligned with their expertise
+| Property | Type | Options |
+|----------|------|---------|
+| Name | title | — |
+| Platform | select | Substack, LinkedIn, Twitter, Email, YouTube |
+| Status | select | Draft, Ready, Published, Archived |
+| Publish Date/Time | date | — |
+| Suggested Edits | text | — |
 
-Present them as a numbered list with a one-line description each. Ask: "Do these feel right, or should we swap any out?"
+Create the database as an inline database on a new page called "Content Calendar" in the user's workspace. If the user specifies a parent page, create it there.
 
-Wait for confirmation before proceeding.
+## Step 3: Save to Workspace Index
 
-## Step 3: Generate Starter Calendar
+Add a Content section to `.coworker/index.md`:
 
-Build a 2-week content calendar using their pillars and cadence.
-
-For each post:
-```
-Day [X] — [Date]
-Topic: [Specific topic, not a vague category]
-Format: [Steps / Stats / Lessons / Story / Hot Take / List]
-Hook: [One hook option — 9 words or fewer]
-Pillar: [Which pillar this serves]
-```
-
-Rotation rules:
-- Don't repeat the same format two days in a row
-- Mix post types: 40% actionable advice, 30% personal story/lessons, 30% trends/futurism
-- Alternate pillars so no single pillar dominates
-
-## Step 4: Save Everything
-
-Create the following files:
-
-**`.coworker/content/profile.md`**:
-```markdown
-# Content Profile
-
-Niche: [their niche]
-Cadence: [posting frequency]
-90-Day Goal: [their goal]
-
-## Content Pillars
-
-1. **[Pillar 1]** — [description]
-2. **[Pillar 2]** — [description]
-3. **[Pillar 3]** — [description]
-[4-5 if defined]
-
-Generated: [YYYY-MM-DD]
-```
-
-**`.coworker/content/calendar.md`**:
-```markdown
-# Content Calendar — [Date Range]
-
-Generated: [YYYY-MM-DD]
-Pillars: [list]
-Cadence: [X posts/week]
-
----
-
-[Calendar entries from Step 3]
-```
-
-Update **`.coworker/index.md`** — add a Content section:
 ```markdown
 ## Content
-- Profile: `.coworker/content/profile.md`
-- Calendar: `.coworker/content/calendar.md`
-- Pillars: [list them]
-- Cadence: [frequency]
+- Content Calendar: [Notion URL from Step 2]
+- All content skills write here automatically
+- Title → Name property, body → page content
+- Set Platform and Status when creating entries
 ```
 
-If `.coworker/index.md` doesn't exist, create it with a header and the Content section.
+If `.coworker/index.md` doesn't exist, create it with a header and this section.
 
-## Step 5: Next Steps
+## Step 4: Confirm
 
-Print:
+Tell the user:
 
 ```
-Your content system is set up.
+Content calendar created: [URL]
 
-Here's what to do next:
+Every content skill now writes here:
+- LinkedIn AI → Platform: LinkedIn
+- Newsletter Writer → Platform: Substack
+- Social Repurposer → creates one entry per platform
+- Email Sequence Writer → Platform: Email
 
-1. Write your first post: "Write a LinkedIn post about [first calendar topic]"
-2. Hunt patterns in your niche: "Hunt patterns in [their niche]"
-3. Optimize your LinkedIn profile: "Optimize my LinkedIn profile"
-
-Your calendar is at .coworker/content/calendar.md
-Your profile is at .coworker/content/profile.md
-
-Every content skill now reads your pillars and niche automatically.
+All entries start as "Draft". Open your calendar in Notion to review and publish.
 ```
 
 ## Rules
 
-- Keep the intake fast. 3 questions, not 10.
-- Propose pillars — don't make them build from scratch.
-- Every calendar topic must be specific enough to write about immediately.
-- Hook suggestions must be actual hooks (9 words or fewer), not descriptions.
-- Save everything before presenting next steps.
-- If `.coworker/` doesn't exist, create it.
+- Do NOT re-ask for niche, pillars, or voice config if `.coworker/index.md` already has this info.
+- Do NOT generate a local markdown calendar. Everything goes to Notion.
+- The database must be blank — no sample entries.
+- If Notion MCP is not connected, tell the user: "Connect Notion in Cowork settings first, then run this again."
