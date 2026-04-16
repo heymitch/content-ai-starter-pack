@@ -1,5 +1,5 @@
 ---
-name: Echo Draft
+name: echo-draft
 description: Generate human-quality content with automatic AI detection scoring and self-improvement loop. Full pipeline — generate, score, fix, verify. Trigger with "echo draft", "write a post", "write content", "ghost write".
 user-invocable: true
 ---
